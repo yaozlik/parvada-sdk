@@ -1,0 +1,13 @@
+query GetNotifications($limit: Int, $offset: Int, $order: OrderEnum) {
+  attendables(limit: $limit, offset: $offset, order: $order) {
+    id
+    type
+    value
+    attended
+    datetime
+    params {
+      name
+      content
+    }
+  }
+}

@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.apollographql.apollo3' version "3.8.2"
+}
+
+apollo {
+    service("service") {
+        packageName.set("com.aleprhi.alephSDK")
+    }
+}
+
+android {
+    namespace 'com.alephri.alephsdk'
+    compileSdk 33
+    compileSdkVersion 33
+    buildToolsVersion '33.0.2'
+
+    defaultConfig {
+        applicationId "com.alephri.alephsdk"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+
+dependencies {
+    // Location Library Dependencies
+    implementation("com.huawei.hms:location:6.11.0.301") {
+        exclude(group: "com.huawei.hms", module: 'hianalytics')
+    }
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'com.github.tony19:logback-android:3.0.0'
+    implementation 'io.github.nishkarsh:android-permissions:2.1.6'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation "org.greenrobot:eventbus:3.3.1"
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation files('../libs/tslocationmanager-3.4.0.aar')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    //Network
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
+    //GraphQL
+    implementation 'com.apollographql.apollo3:apollo-runtime:3.8.2'
+}
+
+allprojects {
+    repositories {
+        configurations.all{
+            resolutionStrategy{
+                //force "com.google.android.gms:play-services-location:21.0.1"
+            }
+        }
+    }
+}

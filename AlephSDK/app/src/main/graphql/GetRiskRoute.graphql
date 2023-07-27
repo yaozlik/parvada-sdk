@@ -1,0 +1,30 @@
+query GetRiskRouter($origin: GeoPointInput!, $destination: GeoPointInput!,
+  $mobility: MobilityEnum, $datetime: ISO8601DateTime) {
+  riskRouter(origin: $origin, destination: $destination, mobility: $mobility, datetime: $datetime) {
+    routes {
+      riskIndex
+      riskLevel
+      routeSchema
+      distance {
+        text
+      }
+      duration {
+        text
+      }
+      origin {
+        geopoint {
+          lat
+          lon
+        }
+        address
+      }
+      destination {
+        geopoint {
+          lat
+          lon
+        }
+        address
+      }
+    }
+  }
+}
