@@ -1,5 +1,0 @@
-mutation Login($email: String!, $password: String!, $deviceToken: String, $deviceId: String) {
-  login(email: $email, password: $password, deviceToken: $deviceToken, deviceId: $deviceId) {
-    token
-  }
-}
