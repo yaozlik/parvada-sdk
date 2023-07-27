@@ -4,6 +4,8 @@ plugins {
     id 'com.apollographql.apollo3' version "3.8.2"
 }
 
+group = 'com.github.yaozlik'
+
 apollo {
     service("service") {
         packageName.set("com.aleprhi.alephSDK")
@@ -69,6 +71,9 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1'
     //GraphQL
     implementation 'com.apollographql.apollo3:apollo-runtime:3.8.2'
+
+    // JitPack
+    implementation 'com.github.dcendents:android-maven-gradle-plugin:1.5'
 }
 
 allprojects {
